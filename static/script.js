@@ -44,30 +44,30 @@ function fulfillContent(data, count) {
         docDate.innerHTML = '';
         button.removeAttribute("onclick");
     }
+    else {
+        img.src = jsonData[count].image;
 
-    console.log(jsonData);
-    img.src = jsonData[count].image;
+        title.innerHTML = jsonData[count].title;
+        excerpt.innerHTML = jsonData[count].body;
 
-    title.innerHTML = jsonData[count].title;
-    excerpt.innerHTML = jsonData[count].body;
+        let img2 = document.createElement('img');
+        img2.src = jsonData[count].author.image;
+        img2.alt = "Card's photo";
+        profile_img.appendChild(img2);
 
-    let img2 = document.createElement('img');
-    img2.src = jsonData[count].author.image;
-    img2.alt = "Card's photo";
-    profile_img.appendChild(img2);
+        name.innerHTML = jsonData[count].author.name;
 
-    name.innerHTML = jsonData[count].author.name;
+        let date = new Date(jsonData[count].date);
+        let day = date.getDate();
+        let month = '0' + date.getMonth();
+        let year = date.getFullYear();
 
-    let date = new Date(jsonData[count].date);
-    let day = date.getDate();
-    let month = '0' + date.getMonth();
-    let year = date.getFullYear();
-
-    docDate.innerHTML = '' + day + '.' + month+ '.' + year;
+        docDate.innerHTML = '' + day + '.' + month+ '.' + year;
+    }
 }
 
 function getData() {
-    return $.get("http://127.0.0.1:8000/api/cards/", function(data) {
+    return $.get("http://" + window.location.host + "/api/cards/", function(data) {
         console.log(data);
         return data.data
     });

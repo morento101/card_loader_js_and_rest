@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-f+hc50-1@+1!fu(gi*ily(v^**ckeji43x!%dry5omvj+lxg86
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    # 'corsheaders',
     'myapi',
 ]
 
@@ -58,7 +59,11 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # 'corsheaders.middleware.CorsMiddleware',
+    # 'django.middleware.common.CommonMiddleware',
 ]
+
+# CORS_ORIGIN_ALLOW_ALL = True
 
 ROOT_URLCONF = 'card_loader_js_and_rest.urls'
 
