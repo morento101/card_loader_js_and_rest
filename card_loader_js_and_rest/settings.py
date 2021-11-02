@@ -39,8 +39,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
     'rest_framework',
+    'psycopg2',
     # 'corsheaders',
+
     'myapi',
 ]
 
@@ -91,13 +94,24 @@ WSGI_APPLICATION = 'card_loader_js_and_rest.wsgi.application'
 
 DATABASES = {
     'default': {
+        # for sqltite
         # 'ENGINE': 'django.db.backends.sqlite3',
         # 'NAME': BASE_DIR / 'db.sqlite3',
+
+        # for postgres on my local machine
+        # 'ENGINE': 'django.db.backends.postgresql',
+        # 'NAME': 'CARD_DB',
+        # 'USER': 'postgres',
+        # 'PASSWORD': '',
+        # 'HOST': 'localhost',
+        # 'PORT': '5432',
+
+        # for postgresql and docker
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'CARD_DB',
         'USER': 'postgres',
-        'PASSWORD': os.environ.get('postgresql_pass'),
-        'HOST': 'localhost',
+        'PASSWORD': '',
+        'HOST': 'db',
         'PORT': '5432',
     }
 }
